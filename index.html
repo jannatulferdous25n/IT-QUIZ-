@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="IT Quiz - interactive IT learning and assessment platform by Jannatul Ferdous">
+<title>IT Quiz | Jannatul Ferdous</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <a class="brand" href="#" onclick="goHome();return false;"><span class="cap">🎓</span><span>IT Quiz</span></a>
+  <nav>
+    <a href="#" onclick="goHome();return false;">Home</a>
+    <a href="#categories" onclick="showCategories();return false;">Categories</a>
+    <a href="#how" onclick="showHow();return false;">How to Play</a>
+    <a href="#details" onclick="showDetails();return false;">Details</a>
+    <button class="theme" onclick="toggleTheme()" id="themeBtn">☾</button>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero wrap">
+    <div>
+      <span class="eyebrow">INTERACTIVE IT LEARNING PLATFORM</span>
+      <h1>Welcome to <span>IT Quiz</span></h1>
+      <p>Test your IT knowledge, practise important concepts and challenge yourself with thousands of questions.</p>
+      <div class="stats">
+        <div><b>6</b><small>Subjects</small></div>
+        <div><b>5000+</b><small>Questions</small></div>
+        <div><b>3</b><small>Question Types</small></div>
+      </div>
+      <button class="primary" onclick="showCategories()">Explore Categories →</button>
+    </div>
+    <div class="hero-art"><div class="books"><i>HTML</i><i>DATABASE</i><i>CYBER</i><strong>🎓</strong></div></div>
+  </div>
+  <div class="wrap section">
+    <div class="section-title"><div><span class="eyebrow">START LEARNING</span><h2>Choose a Category</h2></div><button class="linkbtn" onclick="showCategories()">View all →</button></div>
+    <div id="homeCats" class="cat-grid"></div>
+  </div>
+  <div class="wrap info"><div><b>Ready for a challenge?</b><p>Choose a subject, enter your name and start learning.</p></div><button class="secondary" onclick="showCategories()">Start Quiz</button></div>
+</section>
+
+<section id="categories" class="page"><div class="wrap inner">
+  <div class="heading"><span class="eyebrow">IT SUBJECTS</span><h1>All Categories</h1><p>Each subject contains MCQ, structured and fill-in-the-blank questions.</p></div>
+  <div id="allCats" class="cat-grid large"></div>
+</div></section>
+
+<section id="name" class="page"><div class="center wrap"><div class="card namecard">
+  <div class="avatar">👤</div><span class="eyebrow">GET STARTED</span><h1>Enter Your Name</h1><p>Your name will appear on your result.</p>
+  <input id="studentName" maxlength="40" placeholder="Type your name here..." autocomplete="off">
+  <div id="chosen" class="chosen"></div>
+  <label class="select-label">Question type</label>
+  <select id="questionType"><option value="mixed">Mixed (MCQ + Structured + Fill in the blank)</option><option value="mcq">Multiple Choice</option><option value="structured">Structured Question</option><option value="fill">Fill in the Blank</option></select>
+  <button class="primary full" onclick="startQuiz()">Start Quiz →</button>
+</div></div></section>
+
+<section id="quiz" class="page"><div class="wrap quizwrap">
+  <div class="quiztop"><div><span>Category</span><b id="qcat"></b></div><div id="timer" class="timer">00:30</div><div class="qnum"><span>Question</span><b id="qcount">1 / 10</b></div></div>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="quizcard"><div class="qtype" id="qtype"></div><h2 id="qtext"></h2><div id="answerArea"></div>
+    <div class="actions"><button class="danger" onclick="endQuiz()">End Quiz</button><button class="primary next" id="nextBtn" onclick="nextQuestion()" disabled>Next Question →</button></div>
+  </div>
+  <p class="creator">Creator: <strong>Jannatul Ferdous</strong></p>
+</div></section>
+
+<section id="result" class="page"><div class="center wrap"><div class="card result">
+  <div class="trophy">🏆</div><span class="eyebrow">QUIZ COMPLETED</span><h1>Well Done, <span id="rname"></span>!</h1><p>You have completed the quiz.</p>
+  <div class="score"><small>Your Score</small><b id="rscore"></b><strong id="rpct"></strong><em id="rmsg"></em></div>
+  <div class="resultbuttons"><button class="secondary" onclick="review()">Review Answers</button><button class="primary" onclick="showCategories()">Back to Home</button></div>
+  <p class="creator">Creator: <strong>Jannatul Ferdous</strong></p>
+</div></div></section>
+
+<section id="review" class="page"><div class="wrap inner"><div class="heading"><span class="eyebrow">RESULT DETAILS</span><h1>Review Answers</h1><p id="reviewSummary"></p></div><div id="reviewList" class="reviews"></div><button class="primary full" onclick="showCategories()">Back to Home</button></div></section>
+
+<section id="how" class="page"><div class="wrap inner"><div class="heading"><span class="eyebrow">GUIDE</span><h1>How to Play</h1><p>Simple steps for students.</p></div><div class="steps">
+<div><b>01</b><h3>Choose a subject</h3><p>Select Basic of Computer, Internet, Cybersecurity, Database, Programming or ICT.</p></div>
+<div><b>02</b><h3>Enter your name</h3><p>Select a question mode and enter your student name.</p></div>
+<div><b>03</b><h3>Answer questions</h3><p>Choose an answer or type your response before the 30-second timer ends.</p></div>
+<div><b>04</b><h3>See your result</h3><p>Get your score, percentage and detailed answer review.</p></div>
+</div></div></section>
+
+<section id="details" class="page"><div class="center wrap"><div class="card details"><div class="bigicon">💻</div><span class="eyebrow">ABOUT IT QUIZ</span><h1>What is IT Quiz?</h1>
+<p><strong>IT Quiz</strong> is an interactive educational website designed to help students practise information technology concepts through short, timed assessments. It combines multiple-choice, structured and fill-in-the-blank questions in one simple learning interface.</p>
+<h2>Benefits for users</h2><ul><li>Improves understanding of core IT concepts.</li><li>Provides quick practice and instant scoring.</li><li>Helps students identify strengths and topics that need more revision.</li><li>Builds confidence before class tests and examinations.</li><li>Works on desktop, tablet and mobile devices.</li></ul>
+<div class="aboutgrid"><div><span>Creator</span><b>Jannatul Ferdous</b></div><div><span>Subjects</span><b>6 IT Subjects</b></div><div><span>Question bank</span><b>5000+ generated questions</b></div></div>
+</div></div></section>
+</main>
+<footer><span>© 2026 IT Quiz. All rights reserved.</span><span>Creator: <b>Jannatul Ferdous</b></span></footer>
+<script src="script.js"></script>
+</body>
+</html>
